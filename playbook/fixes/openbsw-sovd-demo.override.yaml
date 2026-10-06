@@ -1,0 +1,10 @@
+services:
+  openbsw-ecu:
+    build: !override
+      context: ../openbsw/docker/development
+      dockerfile: Dockerfile
+    user: root
+    entrypoint: !override
+      - /bin/bash
+      - -c
+      - "ip tuntap add dev tap0 mode tap && ip link set tap0 up && ip addr flush dev eth0 && ip link add br0 type bridge && ip link set tap0 master br0 && ip link set eth0 master br0 && ip link set br0 up && cd /workspace-overlay && cmake -B build/posix-freertos-sovd -G 'Ninja Multi-Config' -DCMAKE_COMPILE_WARNING_AS_ERROR=ON -DCMAKE_CONFIGURATION_TYPES='Debug;Release' -DCMAKE_DEFAULT_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-Wall -Wextra -Wvla -Wno-deprecated-volatile' -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DCMAKE_C_FLAGS='-Wall -Wextra' -DCMAKE_C_FLAGS_RELEASE='-O2 -DNDEBUG' -DCMAKE_COLOR_DIAGNOSTICS=ON -DBUILD_EXECUTABLE=referenceApp -DBUILD_TARGET_PLATFORM=POSIX -DBUILD_TARGET_RTOS=FREERTOS -DOPENBSW_DIR=/workspace 2>&1 | tail -5 && cmake --build build/posix-freertos-sovd 2>&1 | tail -10 && ./build/posix-freertos-sovd/Release/app.sovdDemo.elf"

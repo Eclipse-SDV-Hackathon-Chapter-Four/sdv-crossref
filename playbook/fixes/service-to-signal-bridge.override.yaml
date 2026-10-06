@@ -1,0 +1,8 @@
+# docker compose -f service-to-signal-compose.yaml -f <this file> up -d
+networks:
+  app-net:
+    driver: bridge
+    attachable: !reset null
+  mcu-net:
+    driver: bridge
+    attachable: !reset null

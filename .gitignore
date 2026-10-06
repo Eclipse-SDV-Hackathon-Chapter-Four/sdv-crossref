@@ -1,0 +1,22 @@
+# never commit: personal material and anything derived from non-public repos
+private/
+
+# rebuildable, large
+# repos/: recreate with ./install_deps.sh --clone (repos/manifest.tsv stays tracked)
+repos/*
+!repos/manifest.tsv
+# .venv/: ./install_deps.sh --vault
+.venv/
+# AutoSD image, Ankaios binaries, verifier scratch; the quickstarts re-fetch them
+.local-*/
+# facts database: .venv/bin/python scripts/build_facts.py
+facts/*.duckdb
+
+# noise
+__pycache__/
+*.pyc
+.cdabuild.log
+.DS_Store
+
+# marker left by the vault's export script
+.export-generated

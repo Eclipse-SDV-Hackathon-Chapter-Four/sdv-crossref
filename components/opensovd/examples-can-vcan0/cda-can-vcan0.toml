@@ -1,0 +1,30 @@
+flash_files_path = "./flash"
+[server]
+transport = "tcp"
+address = "127.0.0.1"
+port = 20702
+[database]
+dir = "./mdds"
+fallback_to_base_variant = true
+[doip]
+enabled = false
+tester_address = "127.0.0.1"
+tester_subnet = "255.255.0.0"
+gateway_port = 13400
+send_timeout_ms = 1000
+[can]
+interface = "rawcan:vcan0"
+response_timeout_ms = 2000
+keepalive_interval_ms = 2000
+probe_timeout_ms = 300
+[[can.ecu_mappings]]
+ecu_name = "OpenBSW"
+request_id = 0x7E0
+response_id = 0x7E8
+[[can.transport_overrides]]
+ecu_name = "OpenBSW"
+transport = "can"
+[ecu.OpenBSW]
+protocol = "UDS_Ethernet_DoIP"
+[logging.otel]
+enabled = false

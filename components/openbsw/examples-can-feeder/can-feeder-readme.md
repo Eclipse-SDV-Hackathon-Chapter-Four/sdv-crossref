@@ -1,0 +1,1 @@
+CAN to KUKSA feeder for the OpenBSW reference app: DBC for frame 0x558 (32-bit big-endian counter), VSS mapping to `Vehicle.Speed`, can-provider 0.5.0 config. Recipe and observed output in [[openbsw-howto]] section "CAN to KUKSA feeder on vcan0".

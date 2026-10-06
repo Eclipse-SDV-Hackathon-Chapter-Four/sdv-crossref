@@ -1,0 +1,13 @@
+{
+  "Vehicle": {
+    "type": "branch",
+    "children": {
+      "Speed": {
+        "type": "sensor",
+        "datatype": "float",
+        "description": "OpenBSW 0x558 demo counter shown as speed",
+        "dbc2vss": { "signal": "Counter", "interval_ms": 1000 }
+      }
+    }
+  }
+}

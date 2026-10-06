@@ -1,0 +1,9 @@
+# Blueprint compose files declare `driver: overlay`, which needs Docker swarm.
+# docker compose -f fms-blueprint-compose.yaml -f fms-blueprint-compose-zenoh.yaml -f <this file> up -d
+networks:
+  fms-backend:
+    driver: bridge
+    attachable: !reset null
+  fms-vehicle:
+    driver: bridge
+    attachable: !reset null

@@ -1,0 +1,19 @@
+# Second override for OpenBSW-SOVD-Demo --profile real-cda (use together with openbsw-sovd-demo.override.yaml).
+# The CDA submodule and LFS binary are absent, so run a locally built opensovd-cda (cargo build --release in repos/opensovd-cda)
+# inside ubuntu:26.04 (host glibc 2.43 is too new for the debian:trixie runtime in the Dockerfile).
+# Needs: export CDA_BIN=/abs/path/to/repos/opensovd-cda/target/release/opensovd-cda
+services:
+  real-sovd-cda:
+    build: !reset null
+    image: ubuntu:26.04
+    user: root
+    volumes:
+      - ${CDA_BIN}:/app/opensovd-cda:ro
+      - ./real-sovd-cda/odx-gen/OpenBSW.mdd:/app/odx/OpenBSW.mdd:ro
+      - ./real-sovd-cda/opensovd-cda.toml:/app/opensovd-cda.toml:ro
+    environment:
+      DOIP_TESTER_IP: 192.168.0.10
+      CDA_CONFIG_FILE: /app/opensovd-cda.toml
+    entrypoint: !override ["/app/opensovd-cda", "--tester-address", "192.168.0.10", "-d", "/app/odx"]
+    healthcheck:
+      disable: true

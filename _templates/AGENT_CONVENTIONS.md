@@ -1,0 +1,15 @@
+# Conventions for research agents (read fully before writing anything)
+
+> The brief the component notes were written under, kept so contributors (human or agent) can match the style. The `sources/` page snapshots it mentions are not published; in this export, cite URLs or `repos/` paths instead.
+
+- Vault root: the folder that holds README.md. Read README.md and _templates/note.md first.
+- Component notes go to components/<slug>/ as: <slug>-overview.md, <slug>-quickstart.md, <slug>-howto.md, <slug>-reference.md, <slug>-integration-notes.md. Use the template frontmatter. Basenames must be unique vault-wide.
+- Shallow-clone the main repo(s): `git clone --depth 1 <url> repos/<name>` (max ~5 repos per component, skip anything >500MB). Cite as repos/<name>/<path>. Record the commit hash and date you looked at.
+- Use WebSearch / WebFetch for docs, issues, discussions, blog posts, talks. Save the important pages as sources/<yyyy-mm-dd>-<your-component-or-event-slug>-<page>.md with the URL on line 1. Always prefix with your own slug so parallel agents never collide; never overwrite an existing file.
+- Every factual claim has a source (URL or repos/ path). If unsure, say "unverified".
+- Append glossary terms to glossary.md (append only; format: `**TERM** — definition. [[note]]`).
+- Audience: a hackathon team working over 2 days (the notes were first written for the coaches helping them). Cover: what it is / what it is NOT; maturity and version; languages, APIs, transports; how to run it in under 15 minutes (exact commands, prerequisites, expected output); known pitfalls (from issues, discussions, prior hackathons); how it connects to other SDV projects; pros/cons and "when not to use"; ideas for a hackathon team (gaps, missing pieces, small contributions).
+- Cross-link with these canonical note names so links resolve: [[iceoryx2-overview]], [[s-core-overview]], [[opensovd-overview]], [[vss-kuksa-overview]], [[uprotocol-overview]], [[ankaios-overview]], [[opendut-overview]], [[autosd-overview]], [[openbsw-overview]], [[sdv-blueprints-overview]], [[zenoh-overview]], [[symphony-overview]], [[muto-overview]], [[threadx-overview]], [[kanto-overview]], [[velocitas-overview]], [[chapter4-overview]], [[chapter4-challenge-doctor-whodunit]], [[chapter4-challenge-hack-to-the-future]], [[hackfest-esslingen-2026]], [[chapter3-retrospective]].
+- <slug>-integration-notes.md must contain a markdown table: | other project | integrates? | how (protocol / library / adapter) | maturity (none / idea / prototype / demo / production) | evidence |. One row per other SDV project you found evidence for, plus rows marked "none found" for the core set (iceoryx2, S-CORE, OpenSOVD, VSS/KUKSA, uProtocol, Ankaios, openDuT, AutoSD, OpenBSW).
+- Do not use sudo. Use Docker/podman only if already installed and running. Do not start builds expected to take >10 minutes. The quickstart is a precise recipe; a verifier runs it later. If you did run something, record the exact output in the quickstart under "Observed on 2026-10-03".
+- Final report (under 300 words): files written, 5 key insights, uncertainties, what the verifier should run.
