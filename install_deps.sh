@@ -199,7 +199,10 @@ do_clone() {
     fi
     head=$(git -C "$dir" rev-parse HEAD)
     if [[ $head != "$commit" ]]; then
-      if git -C "$dir" fetch --quiet --depth 1 origin "$commit" && git -C "$dir" checkout --quiet --detach "$commit"; then
+      # keep the branch name at the pinned commit so build_repo_manifest.py records it instead of "detached"
+      local co=(--detach "$commit")
+      [[ $branch != detached ]] && co=(-B "$branch" "$commit")
+      if git -C "$dir" fetch --quiet --depth 1 origin "$commit" && git -C "$dir" checkout --quiet "${co[@]}"; then
         head=$commit
       else
         echo "clone: $name: at ${head:0:7} instead of pinned ${commit:0:7} (upstream moved)"

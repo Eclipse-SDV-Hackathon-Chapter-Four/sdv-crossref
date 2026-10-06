@@ -20,7 +20,7 @@ related:
 
 Which cloned repos pin old versions of the ecosystem's key packages, measured against the version pin sheet in [[env-setup-matrix]] section 4. Warn a team before they copy one of these repos as a starting point. Every row cites the manifest or image file it was read from.
 
-Verdict counts: stale 26, lagging 12, ahead 1, current 7, no-ref 42.
+Verdict counts: stale 31, lagging 14, ahead 1, current 7, no-ref 48.
 
 ## Repos with stale pins
 
@@ -43,7 +43,14 @@ Only `lagging`, `stale` and `ahead` rows. `ahead` is usually the package's own u
 | hc3-ArBytesMoral | 2025-10-09 | ghcr.io/eclipse-kuksa/kuksa-databroker | `0.6.0` | – | 0.7.1 | **lagging** | `repos/hc3-ArBytesMoral/compute/ankaios.yaml` |
 | hc3-ArBytesMoral | 2025-10-09 | up-rust | `0.7.0` | – | 0.9.0 | **lagging** | `repos/hc3-ArBytesMoral/compute/vehicle_data_accessor/Cargo.toml` |
 | hc3-ArBytesMoral | 2025-10-09 | zenoh | `1.0.0-rc.2` | – | 1.10.x | **stale** | `repos/hc3-ArBytesMoral/compute/vehicle_data_accessor/Cargo.toml` |
-| hc3-SDVenturers | 2025-10-03 | up-rust | `0.7.0` | – | 0.9.0 | **lagging** | `repos/hc3-SDVenturers/adas-drive-mode/Cargo.toml` |
+| hc3-SDVenturers | 2025-10-03 | ankaios_sdk | `0.6.0` | – | 1.0.4 | **stale** | `repos/hc3-SDVenturers/sdv_lab/ankaios/example_workloads/rust_workload/Cargo.toml` |
+| hc3-SDVenturers | 2025-10-03 | up-rust | `0.5.0` | `0.5.0` | 0.9.0 | **stale** | `repos/hc3-SDVenturers/sdv_lab/uprotocol/zenoh/Cargo.lock` |
+| hc3-SDVenturers | 2025-10-03 | up-rust | `0.7.0` | – | 0.9.0 | **lagging** | `repos/hc3-SDVenturers/adas-drive-mode/Cargo.toml`, `repos/hc3-SDVenturers/sdv_lab/ego-vehicle/uprotocol-control/Cargo.toml`, `repos/hc3-SDVenturers/sdv_lab/pid_controller/rust-uprotocol/Cargo.toml` |
+| hc3-SDVenturers | 2025-10-03 | up-rust | `0.7.0` | `0.7.0` | 0.9.0 | **lagging** | `repos/hc3-SDVenturers/sdv_lab/ego-vehicle/uprotocol-sensors/Cargo.lock`, `repos/hc3-SDVenturers/sdv_lab/uprotocol/mqtt/Cargo.lock` |
+| hc3-SDVenturers | 2025-10-03 | up-rust | `0.7.1` | `0.7.1` | 0.9.0 | **lagging** | `repos/hc3-SDVenturers/sdv_lab/uprotocol/cruise-control-app/Cargo.lock` |
+| hc3-SDVenturers | 2025-10-03 | zenoh | `(transitive)` | `1.5.0` | 1.10.x | **stale** | `repos/hc3-SDVenturers/sdv_lab/ego-vehicle/uprotocol-control/Cargo.lock`, `repos/hc3-SDVenturers/sdv_lab/ego-vehicle/uprotocol-sensors/Cargo.lock`, `repos/hc3-SDVenturers/sdv_lab/ego-vehicle/zenoh-control/Cargo.lock` |
+| hc3-SDVenturers | 2025-10-03 | zenoh | `(transitive)` | `1.5.1` | 1.10.x | **stale** | `repos/hc3-SDVenturers/sdv_lab/uprotocol/cruise-control-app/Cargo.lock`, `repos/hc3-SDVenturers/sdv_lab/uprotocol/zenoh/Cargo.lock` |
+| hc3-SDVenturers | 2025-10-03 | zenoh | `1.5.0` | – | 1.10.x | **stale** | `repos/hc3-SDVenturers/sdv_lab/pid_controller/rust-uprotocol/Cargo.toml` |
 | iceoryx2 | 2026-10-02 | zenoh | `1.9.0` | `1.9.0` | 1.10.x | **lagging** | `repos/iceoryx2/integrations/zenoh/Cargo.lock` |
 | opensovd-fault-lib | 2026-10-01 | iceoryx2 | `eba5da4b8d8cb03bccf1394d88a05e31f58838dc` | `0.7.0` | 0.10.0 | **stale** | `repos/opensovd-fault-lib/Cargo.lock` |
 | s-core-orchestrator | 2026-09-03 | iceoryx2 | `(transitive)` | `0.5.0` | 0.10.0 | **stale** | `repos/s-core-orchestrator/tests/test_scenarios/rust/Cargo.lock` |
@@ -74,8 +81,8 @@ Effective version (lock resolution where a lock exists, else the requirement or 
 
 | package | reference | versions seen (repos) |
 |---|---|---|
-| ankaios_sdk | 1.0.4 | `*` (ankaios); `0.6.0` (sdv_lab) |
-| axum | none in the sheet | `0.6.20` (e2e-vehicle-signals, kuksa-databroker, service-to-signal, software-orchestration, software-orchestration-blueprint); `0.8.1` (e2e-vehicle-signals); `0.8.4` (sdv_lab); `0.8.8` (opensovd-demo, up-streamer-rust); `0.8.9` (ankaios, fleet-management, kuksa-databroker, opendut, opensovd-cda, opensovd-core, zenoh) |
+| ankaios_sdk | 1.0.4 | `*` (ankaios); `0.6.0` (hc3-SDVenturers, sdv_lab) |
+| axum | none in the sheet | `0.6.20` (e2e-vehicle-signals, kuksa-databroker, service-to-signal, software-orchestration, software-orchestration-blueprint); `0.8.1` (e2e-vehicle-signals); `0.8.4` (hc3-SDVenturers, sdv_lab); `0.8.7` (hackfest-OpenBSW-Playground, OpenBSW-Playground); `0.8.8` (opensovd-demo, up-streamer-rust); `0.8.9` (ankaios, fleet-management, kuksa-databroker, opendut, opensovd-cda, opensovd-core, zenoh) |
 | eclipse-zenoh (pip) | 1.10.1 | `>=1.5.1` (hc3-ArBytesMoral) |
 | eclipse/zenoh | 1.10.1 | `1.1.0` (e2e-vehicle-signals, fleet-management); `1.6.2` (service-to-signal) |
 | ghcr.io/eclipse-ankaios/app-ankaios-dev | 1.0.4 | `0.2.0-rc1` (acc-maestro-challenge, hc2-challenge-maestro); `0.5.0` (hc2-challenge-shift-to-sdv, software-orchestration, software-orchestration-blueprint) |
@@ -88,9 +95,9 @@ Effective version (lock resolution where a lock exists, else the requirement or 
 | iceoryx2 | 0.10.0 | `0.5.0` (s-core-orchestrator); `0.7.0` (opensovd-fault-lib, s-core-orchestrator, up-transport-iceoryx2-rust); `0.10.999` (iceoryx2) |
 | kuksa-rust-sdk | none in the sheet | `main` (hc3-ArBytesMoral); `0.1.3` (service-to-signal); `0.2.0` (service-to-signal); `0.2.1` (e2e-vehicle-signals); `0.2.2` (fleet-management) |
 | quay.io/eclipse-kuksa/kuksa-databroker | 0.7.1 | `0.6.0` (e2e-vehicle-signals, fleet-management) |
-| tonic | none in the sheet | `0.9.2` (service-to-signal); `0.10.2` (acc-maestro-challenge, hc2-challenge-maestro); `0.11.0` (e2e-vehicle-signals, service-to-signal, software-orchestration, software-orchestration-blueprint); `0.13.1` (sdv_lab); `0.14.3` (up-streamer-rust); `0.14.5` (opendut, opensovd-demo); `0.14.6` (ankaios, fleet-management, kuksa-databroker, opensovd-cda) |
-| up-rust | 0.9.0 | `0.4.0` (e2e-vehicle-signals); `0.5.0` (sdv_lab); `0.7.0` (hc3-ArBytesMoral, hc3-SDVenturers, sdv_lab, up-transport-iceoryx2-rust); `0.7.1` (sdv_lab); `0.9.0` (fleet-management, service-to-signal, up-streamer-rust, up-transport-zenoh-rust); `0.10.0-SNAPSHOT` (up-rust) |
-| zenoh | 1.10.x | `1.0.0-rc.2` (hc3-ArBytesMoral); `1.0.1` (service-to-signal); `1.2.1` (e2e-vehicle-signals); `1.5.0` (sdv_lab); `1.5.1` (sdv_lab); `1.6.2` (service-to-signal); `1.7.2` (up-streamer-rust); `1.9.0` (iceoryx2, up-transport-zenoh-rust); `1.10.1` (fleet-management, zenoh) |
+| tonic | none in the sheet | `0.9.2` (service-to-signal); `0.10.2` (acc-maestro-challenge, hc2-challenge-maestro); `0.11.0` (e2e-vehicle-signals, service-to-signal, software-orchestration, software-orchestration-blueprint); `0.13.1` (hc3-SDVenturers, sdv_lab); `0.14.2` (hackfest-OpenBSW-Playground, OpenBSW-Playground); `0.14.3` (up-streamer-rust); `0.14.5` (opendut, opensovd-demo); `0.14.6` (ankaios, fleet-management, kuksa-databroker, opensovd-cda) |
+| up-rust | 0.9.0 | `0.4.0` (e2e-vehicle-signals); `0.5.0` (hc3-SDVenturers, sdv_lab); `0.7.0` (hc3-ArBytesMoral, hc3-SDVenturers, sdv_lab, up-transport-iceoryx2-rust); `0.7.1` (hc3-SDVenturers, sdv_lab); `0.9.0` (fleet-management, service-to-signal, up-streamer-rust, up-transport-zenoh-rust); `0.10.0-SNAPSHOT` (up-rust) |
+| zenoh | 1.10.x | `1.0.0-rc.2` (hc3-ArBytesMoral); `1.0.1` (service-to-signal); `1.2.1` (e2e-vehicle-signals); `1.5.0` (hc3-SDVenturers, sdv_lab); `1.5.1` (hc3-SDVenturers, sdv_lab); `1.6.2` (service-to-signal); `1.7.2` (up-streamer-rust); `1.9.0` (iceoryx2, up-transport-zenoh-rust); `1.10.1` (fleet-management, zenoh) |
 
 ## Clean repos
 
